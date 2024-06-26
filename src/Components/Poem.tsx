@@ -11,13 +11,12 @@ interface ApiResponse {
 
 const fetchPoem = async (): Promise<ApiResponse[]> => {
   try {
-    const response = await fetch(
-      'https://poetrydb.org/author/Edgar%20Allan%20Poe',
-    );
+    const response = await fetch('https://poetrydb.org/random');
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
     const data: ApiResponse[] = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     throw new Error('Error fetching data');
@@ -39,8 +38,8 @@ function Poem(): React.ReactNode {
       {error && <Text>Error: {error}</Text>}
       {poem ? (
         <View>
-          {poem.map(item => (
-            <Text>{JSON.stringify(item)}</Text>
+          {poem[0].lines.map(line => (
+            <Text>{line}</Text>
           ))}
         </View>
       ) : (

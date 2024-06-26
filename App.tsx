@@ -12,6 +12,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Poem from './src/Components/Poem';
+import Generate from './src/Components/Buttons/Generate';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -36,6 +37,7 @@ function App(): React.JSX.Element {
           <View style={styles.title}>
             <Text style={styles.titleText}>Poem</Text>
             <Poem />
+            <Generate />
           </View>
         </View>
       </ScrollView>
